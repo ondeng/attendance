@@ -17,7 +17,7 @@ def doQuery( conn ) :
     cur.execute( "SELECT reg_number, name FROM students" )
     del students[:]
     for reg_number, name in cur.fetchall() :
-        student = [reg_number,name]
+        student = (reg_number,name)
         students.append(student)
 
 
@@ -32,8 +32,8 @@ def index():
 		myConnection.close()
 
 		return render_template('index.html', students = students)
-
-	#return redirect(url_for('index'))
+	else:
+		return redirect(url_for('index'))
 
 if __name__ == '__main__':
 	app.run()
