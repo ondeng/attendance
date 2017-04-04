@@ -42,7 +42,7 @@
                         <tr>
                           <th width="15%"> Registration Number </th>
                           <th width="15%"> Name </th>
-                          
+                          <th width="15%"> Delete </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -50,7 +50,11 @@
                         <tr>
                           <td> {{ student[0] }} </td>
                           <td> {{ student[1] }} </td>
-                          
+                          <td>
+                            <a href="{{ url_for('delete', name=student[1]) }}">
+                              <i class="fa fa-pencil"></i> Delete
+                            </a>
+                          </td>
                           
                         </tr>
                       {% endfor %}
@@ -64,7 +68,15 @@
                     <hr class="intro-divider">
                 </div>
             {% endif %}
-
+            <div class="row">
+                <form action="{{ url_for('index') }}" method="POST">
+                    Registration Number: <input  name="reg_number"/>
+                    <br>
+                    Name: <input  type="text" name="name"/>
+                    <br>
+                    <input type="submit" value="Add student">
+                </form>
+            </div>
             
 
         </div>
